@@ -1,5 +1,6 @@
 package com.hzz.gankapp.util.retrofit
 
+import android.util.Log
 import com.hzz.gankapp.bean.Response
 import okhttp3.OkHttpClient
 import retrofit2.GsonConverterFactory
@@ -11,6 +12,7 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.functions.Action1
 import rx.schedulers.Schedulers
 import rx.subscriptions.CompositeSubscription
+import java.net.SocketTimeoutException
 
 /**
  * Created by ewhale on 2016/3/11.
@@ -42,13 +44,17 @@ open class RetrofitBase {
     fun <T> subscriber(action: Action1<T>): Subscriber<T> {
         return object : Subscriber<T>() {
             override fun onNext(p0: T) {
-                if (!mCompositeSubscription!!.isUnsubscribed!!) {
+                if (!mCompositeSubscription!!.isUnsubscribed) {
                     action.call(p0)
                 }
             }
 
             override fun onError(p0: Throwable?) {
-                p0?.printStackTrace()
+                if (p0 is SocketTimeoutException) {
+                    Log.i("msg", "连接超时")
+                } else {
+                    p0?.printStackTrace()
+                }
             }
 
             override fun onCompleted() {
