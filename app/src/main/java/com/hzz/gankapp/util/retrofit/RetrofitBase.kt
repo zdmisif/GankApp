@@ -51,7 +51,7 @@ open class RetrofitBase {
 
             override fun onError(p0: Throwable?) {
                 if (p0 is SocketTimeoutException) {
-                    Log.i("msg", "连接超时")
+                    Log.i(TAG, "连接超时")
                 } else {
                     p0?.printStackTrace()
                 }

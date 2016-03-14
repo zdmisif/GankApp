@@ -5,6 +5,18 @@
             android:id="@+id/drawer_day"
             android:checked="true"
             android:title="@string/day_gank" />
+        <item
+            android:id="@+id/drawer_one"
+            android:title="one" />
+        <item
+            android:id="@+id/drawer_two"
+            android:title="two" />
+        <item
+            android:id="@+id/drawer_three"
+            android:title="three" />
+        <item
+            android:id="@+id/drawer_four"
+            android:title="four" />
 
     </group>
 </menu>
