@@ -6,4 +6,5 @@ package com.hzz.gankapp.bean
 class Response<T> {
     var error: Boolean = true
     var results: T? = null
+    var category: List<String>? = null
 }

@@ -29,6 +29,13 @@ class MainActivity : BaseActivity() {
         mGankResultRecyclerView.layoutManager = LinearLayoutManager(this)
         mGankResultRecyclerView.adapter = mAdapter;
 
+        api.getDataDayInfo(2016, 3, 14, object : Action1<HashMap<String, List<GankResult>>> {
+            override fun call(rp: HashMap<String, List<GankResult>>?) {
+                Log.i("msg", "rp.size=" + rp?.size.toString())
+            }
+
+        })
+
         api.getAndroidInfo(2, object : Action1<List<GankResult>> {
             override fun call(p0: List<GankResult>?) {
                 Log.i("msg", p0?.size.toString())

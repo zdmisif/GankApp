@@ -9,6 +9,7 @@ import rx.android.schedulers.AndroidSchedulers
 import rx.functions.Action1
 import rx.schedulers.Schedulers
 import rx.subscriptions.CompositeSubscription
+import java.util.*
 
 /**
  * Created by ewhale on 2016/3/11.
@@ -37,9 +38,13 @@ class GankApi : RetrofitBase {
     }
 
     fun getDataTypeInfo(dataType: String, pageNumber: Int, action: Action1<List<GankResult>>) {
-        deploy(gankService!!.getGankData(dataType, 10, pageNumber), action)
+        deploy(gankService!!.getGankDataByType(dataType, 10, pageNumber), action)
     }
 
+    fun getDataDayInfo(year: Int, month: Int, day: Int
+                       , action: Action1<HashMap<String, List<GankResult>>>) {
+        deploy(gankService!!.getGanDataByTime(year, month, day), action)
+    }
 
 
     override fun getServiceUrl(): String {
