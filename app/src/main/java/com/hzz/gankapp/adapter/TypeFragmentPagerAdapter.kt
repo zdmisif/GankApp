@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.hzz.gankapp.ui.TypePagerFragment
+import com.hzz.gankapp.ui.WelfareFragment
 import rx.subscriptions.CompositeSubscription
 
 /**
@@ -21,8 +22,16 @@ class TypeFragmentPagerAdapter : FragmentPagerAdapter {
         mCompositeSubscription = cs
     }
 
-    override fun getItem(p0: Int): Fragment? {
-        return TypePagerFragment(mTitles[p0], mCompositeSubscription)
+    override fun getItem(index: Int): Fragment? {
+        when (index) {
+            0 -> {
+                return WelfareFragment(mCompositeSubscription)
+            }
+            else -> {
+                return TypePagerFragment(mTitles[index], mCompositeSubscription)
+            }
+        }
+
     }
 
     override fun getCount(): Int {

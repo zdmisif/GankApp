@@ -34,11 +34,15 @@ class TypePagerFragment : BaseFragment {
         mGankResultRecyclerView.layoutManager = LinearLayoutManager(this.activity)
         mGankResultRecyclerView.adapter = mAdapter;
         mApi = GankApi(mCompositeSubscription)
-        mApi.getDataTypeInfo(mType, 1, object : Action1<List<GankResult>> {
+        obtainData(1)
+    }
+
+    fun obtainData(pageNumber: Int) {
+        mApi.getDataTypeInfo(mType, pageNumber, object : Action1<List<GankResult>> {
             override fun call(p0: List<GankResult>?) {
                 Log.i("msg", p0?.size.toString())
                 Log.i("msg", p0?.get(0).toString())
-                mAdapter?.replaceAll(p0 as ArrayList<GankResult>)
+                mAdapter.replaceAll(p0 as ArrayList<GankResult>)
             }
         })
     }
