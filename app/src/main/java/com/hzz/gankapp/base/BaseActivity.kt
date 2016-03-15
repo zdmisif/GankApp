@@ -10,13 +10,15 @@ import rx.subscriptions.CompositeSubscription
 /**
  * Created by ewhale on 2016/3/11.
  */
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity : AppCompatActivity() {
 
-    var mCompositeSubscription: CompositeSubscription? = null
+    lateinit var mCompositeSubscription: CompositeSubscription
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(getLayoutId())
         mCompositeSubscription = CompositeSubscription()
+        initControl()
     }
 
     override fun onDestroy() {
@@ -24,9 +26,15 @@ open class BaseActivity : AppCompatActivity() {
         mCompositeSubscription?.unsubscribe()
     }
 
+    open fun initControl() {
+
+    }
+
+    abstract fun getLayoutId(): Int
+
     fun replaceFragment(containerViewId: Int, fragment: Fragment, tag: String) {
         var isAdd = true
-        var temp: Fragment? = fragmentManager.findFragmentByTag(tag) as Fragment
+        var temp = supportFragmentManager.findFragmentByTag(tag)
         if (temp == null) {
             temp = fragment
             isAdd = false
