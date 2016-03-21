@@ -29,6 +29,9 @@ class MainActivity : BaseActivity() {
                 R.id.drawer_type -> {
                     replaceFragment(R.id.container, mGankTypeInfoFragment, TAG_GANK_TYPE_INFO)
                 }
+                R.id.drawer_web -> {
+                    WebActivity.open(this, "百度", "http://www.baidu.com")
+                }
             }
             mDrawerLayout.closeDrawers()
             true

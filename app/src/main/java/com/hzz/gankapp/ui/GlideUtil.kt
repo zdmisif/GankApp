@@ -5,6 +5,9 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestManager
+import com.bumptech.glide.load.resource.drawable.GlideDrawable
+import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.target.Target
 
 /**
  * Created by ewhale on 2016/3/15.
@@ -31,4 +34,5 @@ class GlideUtil {
                 .dontAnimate()
                 .into(iv)
     }
+
 }

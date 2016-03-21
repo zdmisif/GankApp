@@ -9,14 +9,7 @@
             android:id="@+id/drawer_type"
             android:title="分类浏览" />
         <item
-            android:id="@+id/drawer_two"
-            android:title="two" />
-        <item
-            android:id="@+id/drawer_three"
-            android:title="three" />
-        <item
-            android:id="@+id/drawer_four"
-            android:title="four" />
-
+            android:id="@+id/drawer_web"
+            android:title="测试Web" />
     </group>
 </menu>

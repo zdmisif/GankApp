@@ -1,6 +1,7 @@
 package com.hzz.gankapp.adapter
 
 import android.content.Context
+import android.support.v7.widget.CardView
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,6 @@ import android.widget.ImageView
 import com.hzz.gankapp.R
 import com.hzz.gankapp.bean.GankResult
 import com.hzz.gankapp.ui.GlideUtil
-import kotlinx.android.synthetic.main.item_welfare.*
 import java.util.*
 
 /**
@@ -48,9 +48,11 @@ class WelfareAdapter : RecyclerView.Adapter<WelfareAdapter.WelfareHolder> {
 
     class WelfareHolder : RecyclerView.ViewHolder {
         var mWelfareImg: ImageView
+        var mWelfareCardView: CardView
 
         constructor(itemView: View) : super(itemView) {
             mWelfareImg = itemView.findViewById(R.id.welfare_img) as ImageView
+            mWelfareCardView = itemView.findViewById(R.id.welfare_card_view) as CardView
         }
 
     }

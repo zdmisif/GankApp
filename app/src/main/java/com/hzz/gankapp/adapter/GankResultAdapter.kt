@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.hzz.gankapp.R
 import com.hzz.gankapp.bean.GankResult
+import com.hzz.gankapp.ui.WebActivity
 import java.util.*
 
 /**
@@ -15,8 +16,8 @@ import java.util.*
  */
 class GankResultAdapter : RecyclerView.Adapter<GankResultAdapter.GankResultHolder> {
 
-    var mGankResults: ArrayList<GankResult>
-    var mContext: Context? = null
+    private lateinit var mGankResults: ArrayList<GankResult>
+    private lateinit var mContext: Context
 
     constructor(context: Context) : super() {
         mContext = context
@@ -29,7 +30,11 @@ class GankResultAdapter : RecyclerView.Adapter<GankResultAdapter.GankResultHolde
     }
 
     override fun onBindViewHolder(item: GankResultHolder?, index: Int) {
-        item?.mContent?.text = mGankResults.get(index).desc
+        var gankResult = mGankResults.get(index)
+        item?.mContent?.text = gankResult.desc
+        item?.itemView?.setOnClickListener {
+            WebActivity.open(mContext, gankResult.desc, gankResult.url)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -43,6 +48,7 @@ class GankResultAdapter : RecyclerView.Adapter<GankResultAdapter.GankResultHolde
     }
 
     class GankResultHolder : RecyclerView.ViewHolder {
+
         var mContent: TextView? = null
 
         constructor(itemView: View) : super(itemView) {

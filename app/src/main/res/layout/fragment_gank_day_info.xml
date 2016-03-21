@@ -10,9 +10,4 @@
         android:layout_height="wrap_content"
         android:text="day_info" />
 
-    <ImageView
-        android:id="@+id/mImageView"
-        android:layout_width="30dp"
-        android:layout_height="30dp" />
-
 </LinearLayout>

@@ -46,16 +46,4 @@ abstract class BaseActivity : AppCompatActivity() {
         }
         transaction.commitAllowingStateLoss()
     }
-
-    //开启activity
-    fun start(context: Context) {
-        var i = Intent(context, javaClass);
-        context.startActivity(i);
-    }
-
-    fun start(context: Context, bundle: Bundle) {
-        var i = Intent(context, javaClass);
-        i.putExtras(bundle);
-        context.startActivity(i);
-    }
 }
